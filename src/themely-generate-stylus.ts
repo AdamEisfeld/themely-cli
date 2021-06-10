@@ -5,10 +5,8 @@
 import * as FileUtils from './utils/FileUtils';
 import ThemelyDictionary, { FlattenOptions, InnerDictionary } from './classes/ThemelyDictionary';
 import * as SignalUtils from './utils/SignalUtils';
+const { program } = require('commander');
 
-const { Command } = require('commander');
-
-const program = new Command();
 program
 .arguments('<schemaPath> <stylusPath> <stylusContainerName>')
 .configureOutput({

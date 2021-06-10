@@ -5,10 +5,8 @@
 import * as FileUtils from './utils/FileUtils';
 import * as SignalUtils from './utils/SignalUtils';
 import ThemelyDictionary from './classes/ThemelyDictionary';
+const { program } = require('commander');
 
-const { Command } = require('commander');
-
-const program = new Command();
 program
 .arguments('<themePath> <cssPath> <cssContainerName>')
 .configureOutput({

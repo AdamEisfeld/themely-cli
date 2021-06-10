@@ -2,11 +2,10 @@
 
 // Imports
 
-import * as CommanderUtils from './utils/CommanderUtils';
 import * as SignalUtils from './utils/SignalUtils';
+const { program } = require('commander');
 
-CommanderUtils.program
-.description('themely description')
+program
 .option('-nb, --nobanner', 'disable banner')
 .option('-nc, --noclear', 'disable clear')
 .command('lint', 'lint your stuff')
@@ -15,9 +14,9 @@ CommanderUtils.program
     outputError: (str: string) => SignalUtils.signalError('SYNTAX ERROR', new Error(`${SignalUtils.cleanup(str)}`))
 });
 
-CommanderUtils.program.addHelpText('beforeAll', `
+program.addHelpText('beforeAll', `
 ${SignalUtils.bannerText()}`);
 
-CommanderUtils.program.parse(process.argv);
+program.parse(process.argv);
 
 //SignalUtils.signalEntry();

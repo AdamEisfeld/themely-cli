@@ -2,14 +2,13 @@ const clear = require('clear');
 const chalk = require('chalk');
 const figlet = require('figlet');
 const gradient = require('gradient-string');
-
-import * as CommanderUtils from './CommanderUtils';
+const { program } = require('commander');
 
 export const signalEntry = function() {
-	if (!CommanderUtils.program.opts().noclear) {
+	if (!program.opts().noclear) {
 		clear();
 	}
-	if (!CommanderUtils.program.opts().nobanner) {
+	if (!program.opts().nobanner) {
 		console.log(
 			gradient(['#FCEE88', '#F09A7E', '#E4556B', '#8D4662', '#414467', '#FFFFFF']).multiline((figlet.textSync('themely', { font: 'roman', verticalLayout: 'fitted', horizontalLayout: 'fitted' })))
 		);	
@@ -80,6 +79,6 @@ export const signalSuccess = function(title: string, message: string) {
 }
 
 export const signalHelp = function() {
-	CommanderUtils.program.outputHelp();
+	program.outputHelp();
 	process.exit(1);
 }

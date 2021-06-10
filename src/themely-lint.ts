@@ -8,10 +8,8 @@ import * as SignalUtils from './utils/SignalUtils';
 import Linter from './classes/Linter';
 import LinterRuleCheckSchema from './classes/LinterRuleCheckSchema';
 import LinterRuleCheckExpansion from './classes/LinterRuleCheckExpansion';
+const { program } = require('commander');
 
-const { Command } = require('commander');
-
-const program = new Command();
 program
 .arguments('<themePath> <schemaPath>')
 .configureOutput({
