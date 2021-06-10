@@ -20,4 +20,4 @@ ${SignalUtils.bannerText()}`);
 
 CommanderUtils.program.parse(process.argv);
 
-SignalUtils.signalEntry();
+//SignalUtils.signalEntry();
