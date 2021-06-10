@@ -6,6 +6,7 @@ import * as CommanderUtils from './utils/CommanderUtils';
 import * as SignalUtils from './utils/SignalUtils';
 
 CommanderUtils.program
+.description('some other description')
 .command('css', 'build a css file')
 .command('stylus', 'build a stylus file')
 .configureOutput({
