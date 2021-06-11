@@ -1,0 +1,8 @@
+{
+	"colors" : {
+		"buttons" : {
+			"bg" : "red",
+			"fg" : "white"
+		}
+	}
+}

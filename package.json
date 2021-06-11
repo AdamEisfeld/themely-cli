@@ -1,6 +1,6 @@
 {
 	"name": "themely-cli",
-	"version": "0.0.91",
+	"version": "0.1.0",
 	"author": "Adam Eisfeld",
 	"main": "lib/themely.js",
 	"types": "lib/themely.d.ts",

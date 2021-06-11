@@ -10,9 +10,23 @@ const gradient = require('gradient-string');
  * Exports
  */
 
+const logMessage = function(message: string) {
+	console.log(`${message}`);
+};
+
+const logError = function(message: string) {
+	console.error(`${message}`);
+};
+
+export const shift = function(label: string, execute: ()=>void) {
+	console.group(label);
+	execute();
+	console.groupEnd();
+};
+
 export const bannerText = function(): string {
 	return gradient(['#FCEE88', '#F09A7E', '#E4556B', '#8D4662', '#414467', '#FFFFFF']).multiline((figlet.textSync('themely', { font: 'roman', verticalLayout: 'fitted', horizontalLayout: 'fitted' })));
-}
+};
 
 export const cleanup = function(errorString: string): string {
 	if (errorString.substring(0, 7).toLowerCase() == 'error: ') {
@@ -21,50 +35,66 @@ export const cleanup = function(errorString: string): string {
 		errorString = errorString.slice(9);
 	}
 	return errorString;
-}
+};
 
 export const newline = function() {
-	console.log('');
-}
+	logMessage('');
+};
 
-export const signalError = function(title: string, error: Error, exit: boolean = true) {
+export const signalError = function(title: string, error: Error, additional: string = '', exit: boolean = true) {
 	let errorString = `${error.message}`;
 
-	console.error(
-		chalk.red.bold(`${title}`),
-		chalk.red(errorString)
+	logError(
+		chalk.red.bold(`${title}`)
+		+ ' ' + chalk.red(errorString)
 	);
+
+	if (additional.length > 0) {
+		logError(
+			chalk.red.bold(`↳`)
+			+ ' ' + chalk.red(additional)
+		);
+	}
 
 	if (exit) {
 		process.exit(1);
 	}
-}
+};
 
 export const signalErrors = function(title: string, errors: Error[]) {
 	for (let error of errors) {
-		signalError(title, error, false);
+		signalError(title, error, '', false);
 	}
 	process.exit(1);
-}
+};
+
+export const signalUnknownError = function(title: string, error: unknown, additional: string) {
+	if (typeof error === 'string') {
+		signalError(title, new Error(error), additional);
+	} else if (error instanceof Error) {
+		signalError(title, error, additional);
+	} else {
+		signalError(title, new Error(`${error}`), additional);
+	}
+};
 
 export const signalStatus = function(title: string, status: string) {
-	console.error(
-		chalk.blue.bold(`${title}`),
-		chalk.white(status)
+	logMessage(
+		chalk.blue.bold(`${title}`)
+		+ ' ' + chalk.white(status)
 	);
-}
+};
 
 export const signalWarning = function(title: string, warning: string) {
-	console.error(
-		chalk.yellow.bold(`${title}`),
-		chalk.yellow(warning)
+	logMessage(
+		chalk.yellow.bold(`${title}`)
+		+ ' ' + chalk.yellow(warning)
 	);
-}
+};
 
 export const signalSuccess = function(title: string, message: string) {
-	console.log(
-		chalk.green.bold(`${title}`),
-		chalk.green(message)
+	logMessage(
+		chalk.green.bold(`${title}`)
+		+ ' ' + chalk.green(message)
 	);
-	process.exit(1);
-}
+};

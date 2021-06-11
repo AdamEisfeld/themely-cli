@@ -2,7 +2,9 @@
  * Imports
  */
 
+import { exit } from 'process';
 import * as FileUtils from '../utils/FileUtils';
+import * as SignalUtils from '../utils/SignalUtils';
 
 /**
  * Exports
@@ -24,8 +26,16 @@ export default class ThemelyDictionary {
 	};
 
 	public static fromFile(relativePath: string): ThemelyDictionary {
-		let data = FileUtils.readFileSync(relativePath);
-		let values = JSON.parse(data);
+
+		if (relativePath && relativePath.length == 0) {
+			throw new Error('Empty JSON path provided.');
+		}
+		if (!FileUtils.fileExistsAtRelativePath(relativePath)) {
+			throw new Error(`JSON file does not exist: ${ relativePath }`);
+		}
+
+		let data: any = FileUtils.readFileSync(relativePath);
+		let values: InnerDictionary = JSON.parse(data);
 		return new ThemelyDictionary(values, relativePath);
 	}
 

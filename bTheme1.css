@@ -1,0 +1,4 @@
+.redMode {
+	--colors-buttons-bg: red;
+	--colors-buttons-fg: white;
+}
