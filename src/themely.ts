@@ -3,7 +3,7 @@
 // Imports
 
 import * as SignalUtils from './utils/SignalUtils';
-const commander = require('../');
+const commander = require('commander');
 import { setupThemelyLint } from './themely-lint';
 import { setupThemelyGenerate } from './themely-generate';
 
