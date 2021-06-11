@@ -8,8 +8,8 @@ const { program } = require('commander');
 program
 .option('-nb, --nobanner', 'disable banner')
 .option('-nc, --noclear', 'disable clear')
-.command('lint', 'lint your stuff')
-.command('generate', 'build a file')
+.command('lint', 'lint your stuff', { executableFile: 'themely-lint' })
+.command('generate', 'build a file', { executableFile: 'themely-generate' })
 .configureOutput({
     outputError: (str: string) => SignalUtils.signalError('SYNTAX ERROR', new Error(`${SignalUtils.cleanup(str)}`))
 });
