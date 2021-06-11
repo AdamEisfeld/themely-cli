@@ -1,6 +1,6 @@
 {
 	"name": "themely-cli",
-	"version": "0.0.9",
+	"version": "0.0.91",
 	"author": "Adam Eisfeld",
 	"main": "lib/themely.js",
 	"types": "lib/themely.d.ts",
@@ -38,7 +38,6 @@
 	},
 	"dependencies": {
 		"chalk": "^4.1.1",
-		"clear": "^0.1.0",
 		"commander": "^7.2.0",
 		"figlet": "^1.5.0",
 		"gradient-string": "^1.2.0",

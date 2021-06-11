@@ -1,4 +1,12 @@
+/**
+ * Imports
+ */
+
 import * as FileUtils from '../utils/FileUtils';
+
+/**
+ * Exports
+ */
 
 export type InnerDictionary = { [key: string]: any; };
 export type FlattenOptions = { prefix: string, separator: string, maxDepth: number | null };

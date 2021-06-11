@@ -1,5 +1,13 @@
+/**
+ * Imports
+ */
+
 import LinterRuleProtocol, { LinterResult } from './LinterRuleProtocol';
-import ThemelyDictionary, { FlattenOptions } from './ThemelyDictionary';
+import ThemelyDictionary from './ThemelyDictionary';
+
+/**
+ * Exports
+ */
 
 export default class LinterRuleCheckExpansion implements LinterRuleProtocol {
 

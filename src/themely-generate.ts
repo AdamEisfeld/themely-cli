@@ -1,32 +1,35 @@
 #!/usr/bin/env node
 
-// Imports
+/**
+ * Imports
+ */
 
+import * as SignalUtils from './utils/SignalUtils';
 import { setupThemelyGenerateCSS } from './themely-generate-css';
 import { setupThemelyGenerateStylus } from './themely-generate-stylus';
-import * as SignalUtils from './utils/SignalUtils';
 
+/**
+ * Exports
+ */
 
 export const setupThemelyGenerate = function(program: any) {
+
+    /**
+	 * Program Setup (Subcommand)
+	 */
+
     program
     .configureOutput({
         outputError: (str: string) => SignalUtils.signalError('SYNTAX ERROR', new Error(`${SignalUtils.cleanup(str)}`))
     });
 
-    const css = program.command('css');
-    setupThemelyGenerateCSS(css);
+    /**
+     * Program Subcommands
+     */
 
-    const stylus = program.command('stylus');
-    setupThemelyGenerateStylus(stylus);
+    const subcommandCSS = program.command('css');
+    setupThemelyGenerateCSS(subcommandCSS);
+
+    const subcommandStylus = program.command('stylus');
+    setupThemelyGenerateStylus(subcommandStylus);
 };
-
-// const { program } = require('commander');
-
-// program
-// .command('css', 'build a css file', { executableFile: 'themely-generate-css' })
-// .command('stylus', 'build a stylus file', { executableFile: 'themely-generate-stylus' })
-// .configureOutput({
-//     outputError: (str: string) => SignalUtils.signalError('SYNTAX ERROR', new Error(`${SignalUtils.cleanup(str)}`))
-// });
-
-// program.parse(process.argv);

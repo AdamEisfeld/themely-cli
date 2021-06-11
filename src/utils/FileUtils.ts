@@ -1,5 +1,13 @@
+/**
+ * Imports
+ */
+
 const path = require('path');
 const fs = require('fs');
+
+/**
+ * Exports
+ */
 
 export const absolutePath = function(relativePath: string): string {
 	return path.resolve(process.cwd(), relativePath)
